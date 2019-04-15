@@ -209,7 +209,7 @@ public class OurPizzaParty {
 
     public void isDelivery(Order o) {
         String isDelivery;
-        System.out.print("\nIs this order a delivery? (yes/no)");
+        System.out.print("\nIs this order a delivery? (yes/no):\t");
         isDelivery = sc.next();
         o.setIs_delivery(isDelivery);
 
@@ -350,7 +350,7 @@ public class OurPizzaParty {
             System.out.println("\n***** " + o.getRestaurant_name() + " Crust Options *****");
             while (rs.next()) {
                 System.out.print("[" + i + "]\t");
-                System.out.println("\t+$" + rs.getString("price") + "\t" + rs.getString("crust_style") + " (" + rs.getString("size") + "\")");
+                System.out.println("+$" + rs.getString("price") + "\t" + rs.getString("crust_style") + " (" + rs.getString("size") + "\")");
                 i++;
             }
 
@@ -388,7 +388,7 @@ public class OurPizzaParty {
 
             while (rs.next()) {
                 System.out.print("[" + i + "]\t");
-                System.out.println("\t" + rs.getString("sauce_name"));
+                System.out.println(rs.getString("sauce_name"));
                 i++;
             }
 
@@ -455,7 +455,7 @@ public class OurPizzaParty {
 
     public void finalizeOrder(Order o) {
 
-        System.out.println("***** Order #" + o.getOrder_id() + " *****");
+        System.out.println("\n***** Order #" + o.getOrder_id() + " *****");
 
         String getCustomerInfo = "SELECT * FROM Customer Where Customer_Name = '" + o.getCustomer_name() + "';";
         String getRestaurantInfo = "SELECT * FROM Restaurant Where Restaurant_Name = '" + o.getRestaurant_name() + "';";
@@ -491,7 +491,7 @@ public class OurPizzaParty {
             System.out.println("Pizzas\tPrice\tDescription");
 
             for (int i = 0; i < finalOrderPizzas.size(); i++) {
-                System.out.print("#" + (i+1) + "\t\t");
+                System.out.print("#" + (i+1) + "\t");
                 System.out.printf("$%.2f\t", finalOrderPizzas.get(i).getPrice());
                 System.out.println(finalOrderPizzas.get(i).toString());
             }
@@ -610,7 +610,7 @@ class Order {
     public void setCustomer_name(String customer_name) {
         this.customer_name = customer_name;
     }
-    
+
     public String getCustomer_name() {
         return customer_name;
     }
