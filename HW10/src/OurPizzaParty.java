@@ -23,7 +23,7 @@ public class OurPizzaParty {
     public OurPizzaParty() {
         database = "PizzaParty";
         username = "root";
-        password = "ns2998";
+        password = "root";
     }
 
     public OurPizzaParty(String database, String username, String password) {
