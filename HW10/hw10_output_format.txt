@@ -1,0 +1,293 @@
+> java PizzaPartyDriver
+
+Connected to PizzaParty!
+
+***** Main Menu *****
+ [1]  Execute SQL Query
+ [2]  Build an Order
+ [3]  Quit
+Enter choice:  1
+
+Enter SQL command:  SELECT * FROM Orders;
+
+1, Jenny, Blaze Pizza, No, null
+2, Corrie, Papa Johns, Yes, AXBP83
+3, Corrie, Dominos Pizza, Yes, AHBF84
+4, Joseph, Papa Johns, No, null
+5, Stephen, Piesanos Stone Fired Pizza, Yes, AXST75
+6, Joseph, Dominos Pizza, Yes, AHBF84
+7, Jenny, Papa Johns, Yes, ARTP69
+8, Stephen, Dominos Pizza, Yes, AHCF27
+9, Jenny, Dominos Pizza, Yes, AHBF84
+10, Jenny, Dominos Pizza, No, null
+11, Jenny, Papa Johns, No, null
+12, Jenny, Dominos Pizza, Yes, AHCF27
+13, Joseph, Dominos Pizza, Yes, AHBF84
+14, Corrie, Piesanos Stone Fired Pizza, No, null
+15, Stephen, Dominos Pizza, Yes, AHBF84
+16, Joseph, Dominos Pizza, Yes, AHBF84
+17, Joseph, Papa Johns, Yes, ARTP69
+18, Corrie, Dominos Pizza, Yes, AHBF84
+19, Corrie, Dominos Pizza, Yes, AHCF27
+20, Joseph, Papa Johns, Yes, ARTP69
+29, Eva, Pizza Hut, Yes, ABSP42
+30, Corrie, Piesanos Stone Fired Pizza, No, null
+31, Corrie, Blaze Pizza, No, null
+32, Eva, Blaze Pizza, Yes, BDCH33
+33, Steve, Piesanos Stone Fired Pizza, No, null
+34, Corrie, Papa Johns, No, null
+
+***** Main Menu *****
+ [1]  Execute SQL Query
+ [2]  Build an Order
+ [3]  Quit
+Enter choice:  1
+
+Enter SQL command:  SELECT * FROM Customer;
+
+Corrie, 1551 E Main Street, 1511551
+Eva, 4200 NW 5th Avenue, 6783254
+Jenny, 22 N 2nd Place, 8675309
+Joseph, 1551 E Main Street, 5155115
+Stephen, 4848 W 48th Terrace, 8884444
+Steve, 1553 NW University Avenue, 3682323
+Vikki, 342 S Spring Way, 3333342
+
+***** Main Menu *****
+ [1]  Execute SQL Query
+ [2]  Build an Order
+ [3]  Quit
+Enter choice:  2
+
+Enter customer name:  Pete
+Customer does not exist!
+
+Enter customer name:  Vikki
+  * Address:	342 S Spring Way
+  * Phone:	3333342
+Is this you? (Yes/No):  yes
+
+***** Restaurant Menu *****
+ [1]  Blaze Pizza
+ [2]  Dominos Pizza
+ [3]  Papa Johns
+ [4]  Piesanos Stone Fired Pizza
+ [5]  Pizza Hut
+Enter choice:  1
+
+Is this order a delivery? (Yes/No):  No
+
+***** Blaze Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  1
+
+***** Blaze Pizza Menu *****
+ [1]	$8.25	Art Lover
+		Artichokes, Garlic, Mozzarella, Ricotta
+ [2]	$8.25	Red Vine
+		Basil, Diced Tomatoes, Mozzarella, Parmesan Asiago
+ [3]	$5.25	Simple Pie
+		Mozzarella, Parmesan Asiago
+Enter choice:  2
+
+***** Blaze Pizza Crusts Options *****
+ [1]	+$0	Classic Dough(11")
+ [2]	+$1	Gluten-Free Dough(11")
+ [3]	+$2	High-Rise Dough(11")
+Enter choice:  3
+
+***** Blaze Pizza Sauce Options *****
+ [1]	Garlic Pesto Sauce
+ [2]	Red Sauce
+ [3]	Red Sauce Dollops
+ [4]	Spicy Red Sauce
+ [5]	White Cream Sauce
+Enter choice:  1
+
+***** Blaze Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  1
+
+***** Blaze Pizza Menu *****
+ [1]	$8.25	Art Lover
+		Artichokes, Garlic, Mozzarella, Ricotta
+ [2]	$8.25	Red Vine
+		Basil, Diced Tomatoes, Mozzarella, Parmesan Asiago
+ [3]	$5.25	Simple Pie
+		Mozzarella, Parmesan Asiago
+Enter choice:  2
+
+***** Blaze Pizza Crusts Options *****
+ [1]	+$0	Classic Dough(11")
+ [2]	+$1	Gluten-Free Dough(11")
+ [3]	+$2	High-Rise Dough(11")
+Enter choice:  1
+
+***** Blaze Pizza Sauce Options *****
+ [1]	Garlic Pesto Sauce
+ [2]	Red Sauce
+ [3]	Red Sauce Dollops
+ [4]	Spicy Red Sauce
+ [5]	White Cream Sauce
+Enter choice:  5
+
+***** Blaze Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  2
+
+***** Order #35 *****
+***** Customer *****
+  * Vikki
+  * 342 S Spring Way
+  * 3333342
+***** Restaurant *****
+  * Blaze Pizza
+  * 3617 Archer RD
+  * 4585208
+Scheduled for Pickup
+
+Pizzas	Price	Description
+  #1	$10.25	11" High-Rise Dough crust Red Vine pizza with Garlic Pesto Sauce sauce
+  #2	$8.25	11" Classic Dough crust Red Vine pizza with White Cream Sauce sauce
+
+Order Total:	$18.50
+
+***** Main Menu *****
+ [1]  Execute SQL Query
+ [2]  Build an Order
+ [3]  Quit
+Enter choice:  2
+
+Enter customer name:  Jenny
+  * Address:	22 N 2nd Place
+  * Phone:	8675309
+Is this you? (Yes/No):  Yes
+
+***** Restaurant Menu *****
+ [1]  Blaze Pizza
+ [2]  Dominos Pizza
+ [3]  Papa Johns
+ [4]  Piesanos Stone Fired Pizza
+ [5]  Pizza Hut
+Enter choice:  4
+
+Is this order a delivery? (Yes/No):  Yes
+
+***** Piesanos Stone Fired Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Menu *****
+ [1]	$9.39	Delux
+		Black Olives, Meatball, Mushroom, Onion, Pepperoni
+ [2]	$9.39	Greek Veggie
+		Diced Tomatoes, Feta, Garlic, Mozzarella, Spinach
+ [3]	$9.39	Piesanos Supreme
+		Italian Sausage, Mushroom, Onion, Pepper, Pepperoni
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Crusts Options *****
+ [1]	+$0	Regular(8")
+ [2]	+$5	Regular(12")
+ [3]	+$10	Regular(16")
+ [4]	+$26	Regular(24")
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Sauce Options *****
+ [1]	BBQ Sauce
+ [2]	Buffalo Sauce
+ [3]	Classic Pizza Sauce
+ [4]	Pesto Sauce
+ [5]	Roma Tomato Sauce
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Menu *****
+ [1]	$9.39	Delux
+		Black Olives, Meatball, Mushroom, Onion, Pepperoni
+ [2]	$9.39	Greek Veggie
+		Diced Tomatoes, Feta, Garlic, Mozzarella, Spinach
+ [3]	$9.39	Piesanos Supreme
+		Italian Sausage, Mushroom, Onion, Pepper, Pepperoni
+Enter choice:  2
+
+***** Piesanos Stone Fired Pizza Crusts Options *****
+ [1]	+$0	Regular(8")
+ [2]	+$5	Regular(12")
+ [3]	+$10	Regular(16")
+ [4]	+$26	Regular(24")
+Enter choice:  2
+
+***** Piesanos Stone Fired Pizza Sauce Options *****
+ [1]	BBQ Sauce
+ [2]	Buffalo Sauce
+ [3]	Classic Pizza Sauce
+ [4]	Pesto Sauce
+ [5]	Roma Tomato Sauce
+Enter choice:  2
+
+***** Piesanos Stone Fired Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Menu *****
+ [1]	$9.39	Delux
+		Black Olives, Meatball, Mushroom, Onion, Pepperoni
+ [2]	$9.39	Greek Veggie
+		Diced Tomatoes, Feta, Garlic, Mozzarella, Spinach
+ [3]	$9.39	Piesanos Supreme
+		Italian Sausage, Mushroom, Onion, Pepper, Pepperoni
+Enter choice:  1
+
+***** Piesanos Stone Fired Pizza Crusts Options *****
+ [1]	+$0	Regular(8")
+ [2]	+$5	Regular(12")
+ [3]	+$10	Regular(16")
+ [4]	+$26	Regular(24")
+Enter choice:  2
+
+***** Piesanos Stone Fired Pizza Sauce Options *****
+ [1]	BBQ Sauce
+ [2]	Buffalo Sauce
+ [3]	Classic Pizza Sauce
+ [4]	Pesto Sauce
+ [5]	Roma Tomato Sauce
+Enter choice:  3
+
+***** Piesanos Stone Fired Pizza Options *****
+ [1]  Add Pizza
+ [2]  Finalize Order
+Enter choice:  2
+
+***** Order #36 *****
+***** Customer *****
+  * Jenny
+  * 22 N 2nd Place
+  * 8675309
+***** Restaurant *****
+  * Piesanos Stone Fired Pizza
+  * 1250 W University Avenue
+  * 3752337
+Delivered by:  Graham
+
+Pizzas	Price	Description
+  #1	$9.39	8" Regular crust Delux pizza with BBQ Sauce sauce
+  #2	$14.39	12" Regular crust Greek Veggie pizza with Buffalo Sauce sauce
+  #3	$14.39	12" Regular crust Delux pizza with Classic Pizza Sauce sauce
+
+Order Total:	$38.17
+
+***** Main Menu *****
+ [1]  Execute SQL Query
+ [2]  Build an Order
+ [3]  Quit
+Enter choice:  3

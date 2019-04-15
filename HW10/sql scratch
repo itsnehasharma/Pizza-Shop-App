@@ -1,0 +1,26 @@
+INSERT INTO Order_Pizza (Order_ID, Pizza_ID, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+Pizza(Pizza_ID, Flavor_Name, Crust_Style, Size, Restaurant_Name, Sauce_Name)
+Price of a pizza is the sum of prices of the flavor and the crust.
+Contains entries for individual pizzas of an order.
+If an order contains multiple pizzas of same type, each will have different entry in pizza table
+with a different Pizza_ID (other attributes will remain same.)
+Orders(Order_ID, Customer_Name, Restautrant_Name, Is_Delivery, Car_Number)
+Price of the order is the sum of prices of all the pizzas included in the order.
+Is_Delivery can be “YES” or “NO”.
+If Is_Delivery is “NO”, Car_Number should be NULL.
+Order_Pizza(Order_ID, Pizza_ID)
+Mapping between Order and Pizza.
+
+
+INSERT INTO Pizza (Pizza_ID, Flavor_Name, Crust_Style, Size, Restaurant_Name, Sauce_Name)
+VALUES (p.getPizza_id(), p.getFlavor()
+
+INSERT INTO Order (Order_ID, Customer_Name, Restautrant_Name, Is_Delivery, Car_Number)
+VALUES (value1, value2, value3, ...);
+
+
+INSERT INTO Order_Pizza (Order_ID, Pizza_ID)
+VALUES (value1, value2, value3, ...);
+
