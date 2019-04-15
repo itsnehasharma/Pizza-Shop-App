@@ -1,3 +1,8 @@
+//Neha Sharma
+//Section 11315
+//HW 10
+//16 April 2019
+
 import java.sql.*;
 import java.util.*;
 
@@ -19,7 +24,6 @@ public class OurPizzaParty {
         database = "PizzaParty";
         username = "root";
         password = "ns2998";
-
     }
 
     public OurPizzaParty(String database, String username, String password) {
