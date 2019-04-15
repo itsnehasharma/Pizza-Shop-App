@@ -49,7 +49,7 @@ public class OurPizzaParty {
         int selection = 0;
 
         while (selection != 3) {
-            System.out.println("\n***** Main Menu *****");
+            System.out.println("\n\n***** Main Menu *****");
             System.out.println("[1]  Execute SQL Query");
             System.out.println("[2]  Build an Order");
             System.out.println("[3]  Quit");
@@ -68,14 +68,13 @@ public class OurPizzaParty {
                     break;
 
                 case 3:
-                    System.out.println("Goodbye!");
+                    System.out.println("Happy eating!");
                     break;
 
                 default:
                     System.out.println("Please choose one of the available options");
             }
         }
-
     }
 
     public void executeSQLStatement() {
@@ -108,14 +107,13 @@ public class OurPizzaParty {
                 System.out.println();
             }
 
-
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
 
     }
 
-    public void buildOrder() {
+    public void buildOrder() { //starts a new order
 
         Order newOrder = new Order();
         String selectOrders = "select order_id from orders order by order_id;";
@@ -131,11 +129,11 @@ public class OurPizzaParty {
             sqle.printStackTrace();
         }
 
-        newOrder.setCustomer_name(getCustomer());
-        getRestaurant(newOrder);
-        isDelivery(newOrder);
-        insertOrderIntoDB(newOrder);
-        options(newOrder);
+        newOrder.setCustomer_name(getCustomer()); //set name of customer
+        getRestaurant(newOrder); //set restaurant name
+        isDelivery(newOrder); //set is delivery and car number
+        insertOrderIntoDB(newOrder); //insert order into the db
+        options(newOrder); //move on to pizza options
     }
 
     public String getCustomer() {
@@ -158,7 +156,7 @@ public class OurPizzaParty {
 
                 if (confirm.equalsIgnoreCase("yes")) {
                     rs.first();
-                    return rs.getString("Customer_Name");
+                    return customer;
                 } else if (confirm.equalsIgnoreCase("no")) {
                     System.out.println("Looks like you don't exist. Sorry!");
                     menu();
@@ -234,7 +232,6 @@ public class OurPizzaParty {
         System.out.println("\n***** " + o.getRestaurant_name() + " Options *****");
         System.out.println("[1]  Add Pizza");
         System.out.println("[2]  Finalize Order");
-        System.out.println("[3]  Quit");
 
         System.out.print("Enter choice: ");
         int selection = sc.nextInt();
@@ -242,22 +239,19 @@ public class OurPizzaParty {
         if (selection == 1) {
 
             Pizza p = new Pizza();
-            newPizzaID(p);
-            p.setRestaurant(o.getRestaurant_name());
-            getFlavor(o, p);
-            getCrust(o, p);
-            getSauce(o, p);
-            p.setOrder_id(o.getOrder_id());
-            o.addPizza(p);
-            o.addToOrderTotal(p.getPrice());
-            insertPizzaIntoDB(o, p);
-            options(o);
+            newPizzaID(p); //create a new pizza
+            p.setRestaurant(o.getRestaurant_name()); //set pizza restaurant
+            getFlavor(o, p); //set pizza flavor and + to price
+            getCrust(o, p); //set pizza crust and + to price
+            getSauce(o, p); //set pizza sauce
+            p.setOrder_id(o.getOrder_id()); //match order ids
+            o.addPizza(p); //add pizza to order
+            o.addToOrderTotal(p.getPrice()); //add price to order total
+            insertPizzaIntoDB(o, p); //insert pizza into the db
+            options(o); //option to add more pizzas or finalize order
 
         } else if (selection == 2) {
-            finalizeOrder(o);
-        } else if (selection == 3){
-            System.out.println("Happy Eating!!");
-            System.exit(0);
+            finalizeOrder(o); //adds pizza & order to order_pizza and prints information
         }
         else {
             System.out.println("You messed up....");
@@ -297,8 +291,10 @@ public class OurPizzaParty {
             while (rs.next()) {
                 System.out.print("[" + i + "]\t");
                 System.out.print("$" + rs.getString("price") + "\t");
+
                 String flavor = rs.getString("flavor_name");
                 System.out.println(flavor);
+
                 String toppings = getToppings(flavor);
                 System.out.println("\t" + toppings);
                 i++;
@@ -306,9 +302,11 @@ public class OurPizzaParty {
 
             System.out.print("Enter choice:\t");
             selection = sc.nextInt();
+
             rs.absolute(selection);
             String flavor = rs.getString("flavor_name");
             double price = Double.parseDouble(rs.getString("price"));
+
             p.setFlavor(flavor);
             p.addToPrice(price);
 
@@ -330,6 +328,7 @@ public class OurPizzaParty {
                 returnToppings += rs1.getString("topping_name") + ", ";
             }
             returnToppings = returnToppings.substring(0, returnToppings.length() - 1);
+
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -358,9 +357,12 @@ public class OurPizzaParty {
             System.out.print("Enter choice:\t");
             selection = sc.nextInt();
             rs.absolute(selection);
+
             String crust = rs.getString("crust_style");
             double crustPrice = Double.parseDouble(rs.getString("price"));
+
             int size = Integer.parseInt(rs.getString("size"));
+
             p.setCrust(crust);
             p.setSize(size);
             p.addToPrice(crustPrice);
@@ -383,6 +385,7 @@ public class OurPizzaParty {
             int i = 1;
 
             System.out.println("\n***** " + o.getRestaurant_name() + " Sauce Options *****");
+
             while (rs.next()) {
                 System.out.print("[" + i + "]\t");
                 System.out.println("\t" + rs.getString("sauce_name"));
@@ -392,8 +395,8 @@ public class OurPizzaParty {
             System.out.print("Enter choice:\t");
             selection = sc.nextInt();
             rs.absolute(selection);
+
             String sauce = rs.getString("sauce_name");
-            //System.out.println(sauce);
             p.setSauce(sauce);
 
         } catch (SQLException sqle) {
@@ -419,7 +422,6 @@ public class OurPizzaParty {
         try {
             statement = connection.createStatement();
             rs = statement.executeQuery(insertPizza);
-            //rs = statement.executeQuery(insertOrder);
             rs = statement.executeQuery(insertOrderPizza);
 
         } catch (SQLException sqle) {
@@ -455,7 +457,6 @@ public class OurPizzaParty {
 
         System.out.println("***** Order #" + o.getOrder_id() + " *****");
 
-
         String getCustomerInfo = "SELECT * FROM Customer Where Customer_Name = '" + o.getCustomer_name() + "';";
         String getRestaurantInfo = "SELECT * FROM Restaurant Where Restaurant_Name = '" + o.getRestaurant_name() + "';";
         String getDriver = "SELECT Driver_Name FROM Driver Where Car_Number = '" + o.getCar_number() + "';";
@@ -464,8 +465,8 @@ public class OurPizzaParty {
 
         try {
             statement = connection.createStatement();
-            rs = statement.executeQuery(getCustomerInfo);
 
+            rs = statement.executeQuery(getCustomerInfo);
             System.out.println("\n***** Customer *****");
             while (rs.next()) {
                 System.out.println("  * " + rs.getString(1));
@@ -474,7 +475,6 @@ public class OurPizzaParty {
             }
 
             rs = statement.executeQuery(getRestaurantInfo);
-
             System.out.println("\n***** Restaurant *****");
             while (rs.next()) {
                 System.out.println("  * " + rs.getString(1));
@@ -483,13 +483,11 @@ public class OurPizzaParty {
             }
 
             rs = statement.executeQuery(getDriver);
-
             while (rs.next()) {
                 System.out.println("Delivered by: " + rs.getString(1));
             }
 
             System.out.println("\n***** Pizzas *****");
-
             System.out.println("Pizzas\tPrice\tDescription");
 
             for (int i = 0; i < finalOrderPizzas.size(); i++) {
@@ -503,5 +501,160 @@ public class OurPizzaParty {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
+    }
+}
+
+class Pizza {
+
+    private int pizza_id;
+    private String flavor;
+    private String crust;
+    private int size;
+    private String restaurant;
+    private String sauce;
+    private double price;
+    private int order_id;
+
+    public Pizza(){
+
+    }
+
+    public void setPizza_id(int pizza_id) {
+        this.pizza_id = pizza_id;
+    }
+
+    public int getPizza_id() {
+        return pizza_id;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setCrust(String crust) {
+        this.crust = crust;
+    }
+
+    public String getCrust() {
+        return crust;
+    }
+
+    public void setSize(int size) { this.size = size; }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public void setSauce(String sauce) {
+        this.sauce = sauce;
+    }
+
+    public String getSauce() {
+        return sauce;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public int getOrder_id() { return order_id;   }
+
+    public double getPrice(){ return price; }
+
+    public void addToPrice(double price){
+        this.price += price;
+    }
+
+    public String toString(){
+        String s = size + "\" " + crust + " " + flavor + " pizza with " + sauce;
+        return s;
+    }
+}
+
+class Order {
+
+    private int order_id;
+    private String customer_name;
+    private String restaurant_name;
+    private String is_delivery;
+    private String car_number;
+    private ArrayList<Pizza> pizzas = new ArrayList<>();
+    private double orderTotal;
+
+    public Order(){
+        order_id = 0;
+        customer_name = "null";
+        restaurant_name = "null";
+        is_delivery = "no";
+        car_number = "ABSP42";
+    }
+
+    public void setOrder_id(int order_id) { this.order_id = order_id; }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+    
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+
+    public void setRestaurant_name(String restaurant_name) {
+        this.restaurant_name = restaurant_name;
+    }
+
+    public String getRestaurant_name() {
+        return restaurant_name;
+    }
+
+    public void setIs_delivery(String is_delivery) {
+        this.is_delivery = is_delivery;
+    }
+
+    public String getIs_delivery() {
+        return is_delivery;
+    }
+
+    public String getCar_number() {
+        return car_number;
+    }
+
+    public void setCar_number(String car_number) {
+        this.car_number = car_number;
+    }
+
+    public void addPizza(Pizza p){ pizzas.add(p); }
+
+    public ArrayList<Pizza> getPizzas(){ return pizzas; }
+
+    public void addToOrderTotal(double price) { this.orderTotal += price; }
+
+    public double getOrderTotal() { return orderTotal; }
+
+    public String toString(){
+        String s = "\norder id: " + order_id +
+                "\ncustomer_name: " + customer_name +
+                "\nrestaurant_name: " + restaurant_name +
+                "\nis_delivery: " + is_delivery +
+                "\ncar_number: " + car_number;
+
+        return s;
     }
 }
